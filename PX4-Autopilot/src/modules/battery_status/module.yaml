@@ -268,15 +268,14 @@ parameters:
 
         SM_TCS_LDG_MD:
             description:
-                short: TCS landing mode (VTOL,STOL,CTOL)
+                short: TCS landing mode (VTOL/STOL,CTOL)
                 long: |
-                    TCS landing mode (VTOL,STOL,CTOL)
+                    TCS landing mode (VTOL/STOL,CTOL)
 
             type: enum
             values:
                 1: VTOL
-                2: STOL
-                3: CTOL
+                2: CTOL
             default: 1
 
         SM_TCS_OPS${i}:
@@ -287,9 +286,9 @@ parameters:
 
             type: float
             decimal: 2
-            num_instances: 7
+            num_instances: 8
             instance_start: 1
-            default: [45,0.5,2,0.02,0.1,5,10]
+            default: [45,0.5,2,0.02,0.1,5,10,35]
     - group: NACELLES
       definitions:
         SM_NAC_${i}:
@@ -728,6 +727,18 @@ parameters:
               1: Manual Deriv (zdot)
               2: Veh Odometry (vz)
             default: 0
+
+        SM_VEL_SOURCE:
+            description:
+                short: Ground velocity (vx,vy) sensor source selector
+                long: |
+                    Ground velocity (vx,vy) sensor source selector
+
+            type: enum
+            values:
+              1: Raw GPS Data
+              2: Veh Loc Posn
+            default: 1
     - group: NAV
       definitions:
         SM_NAV_VCMD:
